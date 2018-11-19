@@ -1,29 +1,23 @@
 from classes.usuario import Usuario
+from classes.dados import Banco_Dados
 
 class Sistema:
 
 
     def __init__ (self):
-        self.usuarios = []
-        self.times = []
+        self.banco = Banco_Dados()
         self.usuario_logado = None
-        self.usuario_criados = 0
-        self.times_criados = 0
-        self.quadros_criados = 0
-        self.listas_criadas = 0
-        self.cartoes_criados = 0
-
 
     def criar_usuario(self,nome,email,senha):
         #TODO validação de nome e email disponiveis
-        usuario = Usuario(nome,self.usuario_criados,email,senha)
-        self.usuarios.append(usuario)
+        usuario = Usuario(nome,self.banco.quantidade_usuarios,email,senha)
+        self.banco.armazenar_usuario(usuario)
         self.usuario_logado = usuario
         self.usuario_criados += 1
         return True
 
     def logar_usuario(self,email,senha):
-        for usario in self.usuarios :
+        for usario in self.banco.usuarios :
             if usario.validacao(email,senha):
                 self.usuario_logado = usuario
                 return True
