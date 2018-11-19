@@ -1,8 +1,7 @@
-from classes.lista import Lista
 
 class Quadro:
 
-    def __init__(self,id,titulo,membros,tipo = "pa",listas = [Lista("Em andamento"),Lista("A fazer"),Lista("Concluído")]):
+    def __init__(self,id,titulo,membros,tipo = "pa",listas=[]):
         self.id = id
         self.titulo = titulo
         self.tipo = tipo
@@ -11,4 +10,4 @@ class Quadro:
 
 
     def __str__(self):
-        return "{'id':%d; 'titulo':%s; 'tipo':%s; 'membros':%s; 'listas':%s}" %(self.id,self.titutlo,self.tipo,str(self.membros),str(self.listas))
+        return "Quadro : %s" %self.titulo

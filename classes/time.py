@@ -8,4 +8,4 @@ class Time:
         self.quadros = []
 
     def __str__(self):
-        return "{'id':%d; 'titulo':%s; 'lider':%d; 'usuarios':%s; 'quadros':%s}" %(self.id,self.titulo,self.lides,str(self.usuarios),str(self.quadros))
+        return "Time : %s" %self.titulo

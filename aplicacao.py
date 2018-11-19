@@ -33,7 +33,9 @@ menu_unlogged = """Bem vindo ao Trello
 digite a opção que deseja usuar
 1 - Criar Conta
 2 - Acessar Conta
-0 - Sair do Programa"""
+0 - Sair do Programa
+
+"""
 
 
 
@@ -42,14 +44,29 @@ def iniciar_sessao(sistema):
     opcao = 1
     while opcao != 0:
         opcao = int(input(menu_logged))
+        if opcao == 0 :
+            sistema.deslogar() 
         if opcao == 1 :
             nome = input("Digite o nome do Time: ")
             sistema.criar_time(nome)
             #tela_time(sistema)
         if opcao == 2 :
-            nome = input("Digite o Nome do Quadro: ")
+            titulo = input("Digite o Nome do Quadro: ")
             sistema.criar_quadro(titulo)
             #tela_quadro(sistema)
+        if opcao == 3 :
+            quadros = sistema.listar_quadros()
+            for quadro in quadros:
+                print(quadro)
+            titulo = input("Qual quadro deseja visualizar? (digite igual ao nome do quadro) ")
+            if sistema.acessar_quadro(titulo):
+                pass
+                #tela_quadro(sistema)
+            else :
+                print("Quadro não existente ou não disponivel ao usuário atual")
+
+
+
 
 
 
@@ -65,7 +82,9 @@ O que deseja fazer?
 2 - Criar Quadro
 3 - Acessar seus Quadros
 4 - Acessar seus Times
-0 - Deslogar"""
+0 - Deslogar
+
+"""
 
 
 
