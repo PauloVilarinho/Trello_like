@@ -2,7 +2,8 @@ from classes.lista import Lista
 
 class Quadros:
 
-    def __init__(self,titulo,membros):
+    def __init__(self,id,titulo,membros):
+        self.id = id
         self.titulo = titulo
         self.tipo = "pa"
         self.membros = membros
