@@ -53,7 +53,7 @@ def iniciar_sessao(sistema):
         if opcao == 2 :
             titulo = input("Digite o Nome do Quadro: ")
             sistema.criar_quadro(titulo)
-            #tela_quadro(sistema)
+            tela_quadro(sistema)
         if opcao == 3 :
             quadros = sistema.listar_quadros()
             for quadro in quadros:
@@ -61,7 +61,7 @@ def iniciar_sessao(sistema):
             titulo = input("Qual quadro deseja visualizar? (digite igual ao nome do quadro) ")
             if sistema.acessar_quadro(titulo):
                 pass
-                #tela_quadro(sistema)
+                tela_quadro(sistema)
             else :
                 print("Quadro não existente ou não disponivel ao usuário atual")
         if opcao == 4 :
@@ -75,17 +75,6 @@ def iniciar_sessao(sistema):
             else :
                 print("Time não existente ou não disponivem ao usuário atual")
 
-
-
-
-
-
-
-
-
-
-
-
 menu_logged = """Bem vindo
 O que deseja fazer?
 1 - Criar Time
@@ -96,8 +85,28 @@ O que deseja fazer?
 
 """
 
+def tela_quadro(sistema):
+    opcao = 1
+    while opcao != 0 :
+        opcao = int(input(menu_quadro))
+        if opcao == 1 :
+            titulo = input("Digite o Nome da Lista a ser Criada: ")
+            sistema.adcionar_lista(titulo)
+            #tela_lista(sistema)
+        if opcao == 2 :
+            titulo = input("Digite o nome da lista a ser movida: ")
+            if sistema.mover_lista(titulo):
+                print("lista movida com sucesso")
+            else:
+                print("lista não existe no Quadro")
 
 
+
+menu_quadro = """O que deseja fazer?
+1 - Adcionar lista
+2 - Mover lista
+3 - Acessar lista
+0 - Sair do Quadro"""
 
 
 

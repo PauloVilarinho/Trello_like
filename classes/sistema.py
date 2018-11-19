@@ -37,7 +37,7 @@ class Sistema:
     def criar_quadro(self,titulo):
         quadro = Quadro(self.banco.quantidade_quadros,titulo,self.usuario_logado)
         self.banco.armazenar_quadro(quadro)
-        self.usuario_logado.quadros.append(quadro)
+        self.usuario_logado.adicionar_quadros(quadro)
         self.quadro_usando = quadro
 
     def listar_times(self):
@@ -67,3 +67,10 @@ class Sistema:
                 self.time_usando = time
                 return True
         return False
+
+    def adcionar_lista(self,titulo):
+        lista = self.quadro_usando.adcionar_lista(self.banco.quantidade_listas,titulo)
+        self.banco.armazenar_lista(lista)
+
+    def mover_lista(self,titulo,index):
+        return self.quadro_usando.mover_lista(titulo,index)

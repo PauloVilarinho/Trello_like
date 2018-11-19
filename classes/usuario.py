@@ -15,5 +15,5 @@ class Usuario:
         else :
             return False
 
-    def __str__(self):
-        return "{'id':%d; 'nome':%s; 'email':%s; 'senha':%s; 'quadros':%s }" %(self.id,self.nome,self.email,self.senha,str(self.quadros))
+    def adicionar_quadros(self,quadro):
+        self.quadros.append(quadro)
