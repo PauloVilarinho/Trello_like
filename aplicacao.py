@@ -42,10 +42,14 @@ def iniciar_sessao(sistema):
     opcao = 1
     while opcao != 0:
         opcao = int(input(menu_logged))
-        if opcao = 1 :
-            nome = input("Digite o nome do grupo: ")
+        if opcao == 1 :
+            nome = input("Digite o nome do Time: ")
             sistema.criar_time(nome)
-            tela_time(sistema)
+            #tela_time(sistema)
+        if opcao == 2 :
+            nome = input("Digite o Nome do Quadro: ")
+            sistema.criar_quadro(titulo)
+            #tela_quadro(sistema)
 
 
 

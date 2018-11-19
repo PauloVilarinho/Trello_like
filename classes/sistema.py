@@ -1,5 +1,6 @@
 from classes.usuario import Usuario
 from classes.time import Time
+from classe.quadros import Quadro
 from classes.dados import Banco_Dados
 
 class Sistema:
@@ -12,7 +13,7 @@ class Sistema:
 
     def criar_usuario(self,nome,email,senha):
         #TODO validação de nome e email disponiveis
-        usuario = Usuario(nome,self.banco.quantidade_usuarios,email,senha)
+        usuario = Usuario(nome,self.banco.quantidade_usuarios(),email,senha)
         self.banco.armazenar_usuario(usuario)
         self.usuario_logado = usuario
         return True
@@ -25,5 +26,13 @@ class Sistema:
         return False
 
     def criar_time(self,nome):
-        time = Time(self.banco.quantidade_times,nome)
+        time = Time(self.banco.quantidade_times(),self.usuario_logado,nome)
         self.banco.armazenar_time(time)
+        self.time_usando = time
+
+    def criar_quadro(self,titulo,membros = [self.usuario_logado]):
+        quadro = Quadro(self.banco.quantidade_quadros,titulo,membros)
+        self.banco.armazenar_quadro(quadro)
+        self.quadro_usando = quadro
+
+    def acessar_times(self)
