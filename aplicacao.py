@@ -29,7 +29,7 @@ start = """T)tttttt R)rrrrr  E)eeeeee L)       L)        O)oooo
    T)    R)   rr  E)       L)       L)       O)    oo
    T)    R)    rr E)eeeeee L)llllll L)llllll  O)oooo
                                                         """
-menu_unlogged = """"Bem vindo ao Trello
+menu_unlogged = """Bem vindo ao Trello
 digite a opção que deseja usuar
 1 - Criar Conta
 2 - Acessar Conta
@@ -39,7 +39,13 @@ digite a opção que deseja usuar
 
 
 def iniciar_sessao(sistema):
-    print(menu_logged)
+    opcao = 1
+    while opcao != 0:
+        opcao = int(input(menu_logged))
+        if opcao = 1 :
+            nome = input("Digite o nome do grupo: ")
+            sistema.criar_time(nome)
+            tela_time(sistema)
 
 
 
@@ -50,7 +56,12 @@ def iniciar_sessao(sistema):
 
 
 menu_logged = """Bem vindo
-O que deseja fazer hoje?"""
+O que deseja fazer?
+1 - Criar Time
+2 - Criar Quadro
+3 - Acessar seus Quadros
+4 - Acessar seus Times
+0 - Deslogar"""
 
 
 
