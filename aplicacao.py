@@ -45,7 +45,7 @@ def iniciar_sessao(sistema):
     while opcao != 0:
         opcao = int(input(menu_logged))
         if opcao == 0 :
-            sistema.deslogar() 
+            sistema.deslogar()
         if opcao == 1 :
             nome = input("Digite o nome do Time: ")
             sistema.criar_time(nome)
@@ -64,6 +64,16 @@ def iniciar_sessao(sistema):
                 #tela_quadro(sistema)
             else :
                 print("Quadro não existente ou não disponivel ao usuário atual")
+        if opcao == 4 :
+            times = sistema.listar_times()
+            for time in times:
+                print(time)
+            titulo = input("Qual time deseja vizualizar? (digite igual ao nome do time) ")
+            if sistema.acessar_time(titulo):
+                pass
+                #tela_time(sistema)
+            else :
+                print("Time não existente ou não disponivem ao usuário atual")
 
 
 

@@ -20,8 +20,8 @@ class Sistema:
         return True
 
     def logar_usuario(self,email,senha):
-        for usario in self.banco.usuarios :
-            if usario.validacao(email,senha):
+        for usuario in self.banco.usuarios :
+            if usuario.validacao(email,senha):
                 self.usuario_logado = usuario
                 return True
         return False
@@ -58,5 +58,12 @@ class Sistema:
         for quadro in self.listar_quadros():
             if quadro.titulo == titulo :
                 self.quadro_usando = quadro
+                return True
+        return False
+
+    def acessar_time(self,titulo):
+        for time in self.listar_times():
+            if time.titulo == titulo :
+                self.time_usando = time
                 return True
         return False
