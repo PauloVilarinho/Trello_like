@@ -22,17 +22,6 @@ def main():
             else :
                 print("email ou senha invalidas")
 
-
-
-def iniciar_sessao(sistema):
-    print(menu_logged, format(sistema.usuario_logado.nome))
-
-
-
-
-
-
-
 start = """T)tttttt R)rrrrr  E)eeeeee L)       L)        O)oooo
    T)    R)    rr E)       L)       L)       O)    oo
    T)    R)  rrr  E)eeeee  L)       L)       O)    oo
@@ -46,8 +35,22 @@ digite a opção que deseja usuar
 2 - Acessar Conta
 0 - Sair do Programa"""
 
-menu_logged = "Bem vindo {} \n "\
-"O que deseja fazer hoje?"
+
+
+
+def iniciar_sessao(sistema):
+    print(menu_logged)
+
+
+
+
+
+
+
+
+
+menu_logged = """Bem vindo
+O que deseja fazer hoje?"""
 
 
 
