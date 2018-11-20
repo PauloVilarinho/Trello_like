@@ -39,5 +39,7 @@ class Quadro:
         return False,None
 
 
+
+
     def __str__(self):
         return "Quadro : %s" %self.titulo

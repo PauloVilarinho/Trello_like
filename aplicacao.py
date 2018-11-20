@@ -94,10 +94,10 @@ def tela_quadro(sistema):
         elif opcao == "1" :
             titulo = input("Digite o Nome da Lista a ser Criada: ")
             sistema.adcionar_lista(titulo)
-            #tela_lista(sistema)
+            tela_lista(sistema)
         elif opcao == "2" :
             titulo = input("Digite o nome da lista a ser movida: ")
-            posicao = input("Para qual posição deseja mover  a lista?  ")
+            posicao = int(input("Para qual posição deseja mover  a lista?  "))
             if sistema.mover_lista(titulo):
                 print("lista movida com sucesso")
             else:
@@ -123,8 +123,82 @@ menu_quadro = """O que deseja fazer?
 
 
 def tela_lista(sistema):
-    pass
+    opcao = ""
+    while opcao != "0":
+        opcao = input(menu_lista)
+        if opcao == "1" :
+            titulo = input("Digite o titulo cartão: ")
+            sistema.criar_cartao(titulo)
+        if opcao == "2":
+            cartoes = sistema.listar_cartoes()
+            for cartao in cartoes:
+                print(cartao)
+        if opcao == "3":
+            cartoes = sistema.listar_cartoes()
+            for cartao in cartoes:
+                print(cartao)
+            titulo = input("Qual cartão voce quer mover?  ")
+            id = int(input("para qual posicao? "))
+            if sistema.mover_cartao(id,titulo):
+                print("cartão movido com  sucesso")
+            else :
+                print("cartão não existe nessa lista")
+        if opcao == "4":
+            cartoes = sistema.listar_cartoes()
+            for cartao in cartoes:
+                print(cartao)
+            titulo = input("Qual cartão voce quer descrever?  ")
+            descricao = input("Qual descricao: ")
+            if sistema.adicionar_descricao(titulo,descricao):
+                print("operação com  sucesso")
+            else :
+                print("cartão não existe nessa lista")
+        if opcao == "5":
+            cartoes = sistema.listar_cartoes()
+            for cartao in cartoes:
+                print(cartao)
+            titulo = input("Qual cartão voce quer comentar?  ")
+            comentario = input("Qual comentario: ")
+            if sistema.adicionar_comentario(titulo,comentario):
+                print("operação com  sucesso")
+            else :
+                print("cartão não existe nessa lista")
+        if opcao == "6":
+            cartoes = sistema.listar_cartoes()
+            for cartao in cartoes:
+                print(cartao)
+            titulo = input("Qual cartão voce quer etiquetar?  ")
+            etiqueta = input("Qual etiqueta: ")
+            if sistema.adicionar_etiqueta(titulo,etiqueta):
+                print("operação com  sucesso")
+            else :
+                print("cartão não existe nessa lista")
+        if opcao == "7":
+            cartoes = sistema.listar_cartoes()
+            for cartao in cartoes:
+                print(cartao)
+            titulo = input("Qual cartão voce quer observar?  ")
 
+            if sistema.mostrar_cartao(titulo)[0]:
+                dados = sistema.mostrar_cartao(titulo)[1]
+                print(dados)
+                print("operação com  sucesso")
+            else :
+                print("cartão não existe nessa lista")
+
+
+
+
+
+menu_lista = """O que deseja fazer?
+1 - Criar Cartão
+2 - Listar Cartões
+3 - Mover Cartão
+4 - Adicionar Descrição
+5 - Adicionar Comentarios
+6 - Adicionar Etiqueta
+7 - Visualizar dados do cartão
+"""
 
 
 

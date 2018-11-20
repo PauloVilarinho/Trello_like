@@ -74,6 +74,7 @@ class Sistema:
     def adcionar_lista(self,titulo):
         lista = self.quadro_usando.adcionar_lista(self.banco.quantidade_listas,titulo)
         self.banco.armazenar_lista(lista)
+        self.lista_usando = lista
 
     def mover_lista(self,titulo,index):
         return self.quadro_usando.mover_lista(titulo,index)
@@ -86,3 +87,37 @@ class Sistema:
             self.lista_usando = self.quadro_usando.acessar_lista(titulo)[1]
             return True
         return False
+
+    def criar_cartao(self,titulo):
+         cartao = self.lista_usando.criar_cartao(self.banco.quantidade_cartoes,titulo)
+         self.banco.armazenar_cartao(cartao)
+
+    def listar_cartoes(self):
+        return self.lista_usando.listar_cartoes()
+
+    def mover_cartao(self,id,titulo):
+        if self.lista_usando.mover_cartao(id,titulo):
+            return True
+        else :
+            return False
+
+    def adicionar_descricao(self,titulo,descricao):
+        if self.lista_usando.adicionar_descricao(titulo,descricao):
+            return True
+        else:
+            return False
+
+    def adicionar_comentario(self,titulo,comentario):
+        if self.lista_usando.adicionar_comentario(titulo,comentario):
+            return True
+        else:
+            return False
+
+    def adicionar_etiqueta(self,titulo,etiqueta):
+        if self.lista_usando.adicionar_etiqueta(titulo,etiqueta):
+            return True
+        else:
+            return False
+
+    def mostrar_cartao(self,titulo):
+        return self.lista_usando.mostrar_cartao(titulo)
