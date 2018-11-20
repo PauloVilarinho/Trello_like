@@ -6,4 +6,4 @@ class Lista:
         self.cartoes = []
 
     def __str__(self):
-        return "{'id':%d; 'titulo':%s; 'cartoes':%s}" %(self.id,self.titulo,str(self.cartoes))
+        return "Titulo : %s" %self.titulo

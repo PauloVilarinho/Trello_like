@@ -14,6 +14,9 @@ class Quadro:
         self.listas.append(lista)
         return lista
 
+    def listar_listas(self):
+        return self.listas
+
     def mover_lista(self,titulo,id):
         lista_movida = None
         for lista in self.listas:
@@ -26,6 +29,14 @@ class Quadro:
         self.listas.pop(index)
         self.listas.insert(id,lista_movida)
         return True
+
+    def acessar_lista(self,titulo):
+        lista_acessada = None
+        for lista in self.listas:
+            if lista.titulo == titulo:
+                lista_acessada = lista
+                return True,lista_acessada
+        return False,None
 
 
     def __str__(self):

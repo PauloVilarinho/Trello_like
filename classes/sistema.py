@@ -68,9 +68,21 @@ class Sistema:
                 return True
         return False
 
+    def sair_quadro(self):
+        self.quadro_usando = None
+
     def adcionar_lista(self,titulo):
         lista = self.quadro_usando.adcionar_lista(self.banco.quantidade_listas,titulo)
         self.banco.armazenar_lista(lista)
 
     def mover_lista(self,titulo,index):
         return self.quadro_usando.mover_lista(titulo,index)
+
+    def listar_listas(self):
+        return self.quadro_usando.listar_listas()
+
+    def acessar_lista(self,titulo):
+        if self.quadro_usando.acessar_lista(titulo)[0]:
+            self.lista_usando = self.quadro_usando.acessar_lista(titulo)[1]
+            return True
+        return False

@@ -3,10 +3,10 @@ from classes.sistema import Sistema
 def main():
     sistema = Sistema()
     print(start)
-    opcao = 1
-    while opcao != 0 :
-        opcao = int(input(menu_unlogged))
-        if opcao == 1 :
+    opcao = ""
+    while opcao != "0" :
+        opcao = input(menu_unlogged)
+        if opcao == "1" :
             nome = input("Digite o nome do Usuário:  ")
             email = input("Digite o email do Usuário:  ")
             senha = input("Digite a senha do Usuário:  " )
@@ -14,7 +14,7 @@ def main():
                 iniciar_sessao(sistema)
             else :
                 print("email ou nome de usuário já utilizado.")
-        if opcao == 2:
+        if opcao == "2":
             email = input("Digite o email do Usuário:  ")
             senha = input("Digite a senha do Usuário:  ")
             if sistema.logar_usuario(email,senha):
@@ -41,20 +41,20 @@ digite a opção que deseja usuar
 
 
 def iniciar_sessao(sistema):
-    opcao = 1
-    while opcao != 0:
-        opcao = int(input(menu_logged))
-        if opcao == 0 :
+    opcao = ""
+    while opcao != "0":
+        opcao = input(menu_logged)
+        if opcao == "0" :
             sistema.deslogar()
-        if opcao == 1 :
+        if opcao == "1" :
             nome = input("Digite o nome do Time: ")
             sistema.criar_time(nome)
             #tela_time(sistema)
-        if opcao == 2 :
+        if opcao == "2" :
             titulo = input("Digite o Nome do Quadro: ")
             sistema.criar_quadro(titulo)
             tela_quadro(sistema)
-        if opcao == 3 :
+        if opcao == "3" :
             quadros = sistema.listar_quadros()
             for quadro in quadros:
                 print(quadro)
@@ -64,7 +64,7 @@ def iniciar_sessao(sistema):
                 tela_quadro(sistema)
             else :
                 print("Quadro não existente ou não disponivel ao usuário atual")
-        if opcao == 4 :
+        if opcao == "4" :
             times = sistema.listar_times()
             for time in times:
                 print(time)
@@ -87,19 +87,32 @@ O que deseja fazer?
 
 def tela_quadro(sistema):
     opcao = 1
-    while opcao != 0 :
-        opcao = int(input(menu_quadro))
-        if opcao == 1 :
+    while opcao != "0" :
+        opcao = input(menu_quadro)
+        if opcao == "0":
+            sistema.sair_quadro()
+        elif opcao == "1" :
             titulo = input("Digite o Nome da Lista a ser Criada: ")
             sistema.adcionar_lista(titulo)
             #tela_lista(sistema)
-        if opcao == 2 :
+        elif opcao == "2" :
             titulo = input("Digite o nome da lista a ser movida: ")
+            posicao = input("Para qual posição deseja mover  a lista?  ")
             if sistema.mover_lista(titulo):
                 print("lista movida com sucesso")
             else:
                 print("lista não existe no Quadro")
-
+        elif opcao == "3" :
+            listas = sistema.listar_listas()
+            for lista in listas :
+                print(lista)
+            titulo = input("Digite o Nome da Lista a ser Acessada: ")
+            if sistema.acessar_lista(titulo):
+                tela_lista(sistema)
+            else :
+                print("Lista com esse nome não existe nesse quadro")
+        else :
+            print("Operação não existente")
 
 
 menu_quadro = """O que deseja fazer?
@@ -107,6 +120,12 @@ menu_quadro = """O que deseja fazer?
 2 - Mover lista
 3 - Acessar lista
 0 - Sair do Quadro"""
+
+
+def tela_lista(sistema):
+    pass
+
+
 
 
 
