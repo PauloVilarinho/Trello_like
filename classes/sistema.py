@@ -88,6 +88,9 @@ class Sistema:
             return True
         return False
 
+    def sair_lista(self):
+        self.lista_usando = None
+
     def criar_cartao(self,titulo):
          cartao = self.lista_usando.criar_cartao(self.banco.quantidade_cartoes,titulo)
          self.banco.armazenar_cartao(cartao)

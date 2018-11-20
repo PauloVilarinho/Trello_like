@@ -14,14 +14,15 @@ def main():
                 iniciar_sessao(sistema)
             else :
                 print("email ou nome de usuário já utilizado.")
-        if opcao == "2":
+        elif opcao == "2":
             email = input("Digite o email do Usuário:  ")
             senha = input("Digite a senha do Usuário:  ")
             if sistema.logar_usuario(email,senha):
                 iniciar_sessao(sistema)
             else :
                 print("email ou senha invalidas")
-
+        else :
+            print("Operação não existente")
 start = """T)tttttt R)rrrrr  E)eeeeee L)       L)        O)oooo
    T)    R)    rr E)       L)       L)       O)    oo
    T)    R)  rrr  E)eeeee  L)       L)       O)    oo
@@ -46,15 +47,15 @@ def iniciar_sessao(sistema):
         opcao = input(menu_logged)
         if opcao == "0" :
             sistema.deslogar()
-        if opcao == "1" :
+        elif opcao == "1" :
             nome = input("Digite o nome do Time: ")
             sistema.criar_time(nome)
             #tela_time(sistema)
-        if opcao == "2" :
+        elif opcao == "2" :
             titulo = input("Digite o Nome do Quadro: ")
             sistema.criar_quadro(titulo)
             tela_quadro(sistema)
-        if opcao == "3" :
+        elif opcao == "3" :
             quadros = sistema.listar_quadros()
             for quadro in quadros:
                 print(quadro)
@@ -64,7 +65,7 @@ def iniciar_sessao(sistema):
                 tela_quadro(sistema)
             else :
                 print("Quadro não existente ou não disponivel ao usuário atual")
-        if opcao == "4" :
+        elif opcao == "4" :
             times = sistema.listar_times()
             for time in times:
                 print(time)
@@ -74,6 +75,9 @@ def iniciar_sessao(sistema):
                 #tela_time(sistema)
             else :
                 print("Time não existente ou não disponivem ao usuário atual")
+        else :
+            print("Operação não existente")
+
 
 menu_logged = """Bem vindo
 O que deseja fazer?
@@ -126,14 +130,16 @@ def tela_lista(sistema):
     opcao = ""
     while opcao != "0":
         opcao = input(menu_lista)
-        if opcao == "1" :
+        if opcao == "0" :
+            sistema.sair_lista()
+        elif opcao == "1" :
             titulo = input("Digite o titulo cartão: ")
             sistema.criar_cartao(titulo)
-        if opcao == "2":
+        elif opcao == "2":
             cartoes = sistema.listar_cartoes()
             for cartao in cartoes:
                 print(cartao)
-        if opcao == "3":
+        elif opcao == "3":
             cartoes = sistema.listar_cartoes()
             for cartao in cartoes:
                 print(cartao)
@@ -143,7 +149,7 @@ def tela_lista(sistema):
                 print("cartão movido com  sucesso")
             else :
                 print("cartão não existe nessa lista")
-        if opcao == "4":
+        elif opcao == "4":
             cartoes = sistema.listar_cartoes()
             for cartao in cartoes:
                 print(cartao)
@@ -153,7 +159,7 @@ def tela_lista(sistema):
                 print("operação com  sucesso")
             else :
                 print("cartão não existe nessa lista")
-        if opcao == "5":
+        elif opcao == "5":
             cartoes = sistema.listar_cartoes()
             for cartao in cartoes:
                 print(cartao)
@@ -163,7 +169,7 @@ def tela_lista(sistema):
                 print("operação com  sucesso")
             else :
                 print("cartão não existe nessa lista")
-        if opcao == "6":
+        elif opcao == "6":
             cartoes = sistema.listar_cartoes()
             for cartao in cartoes:
                 print(cartao)
@@ -173,7 +179,7 @@ def tela_lista(sistema):
                 print("operação com  sucesso")
             else :
                 print("cartão não existe nessa lista")
-        if opcao == "7":
+        elif opcao == "7":
             cartoes = sistema.listar_cartoes()
             for cartao in cartoes:
                 print(cartao)
@@ -185,8 +191,8 @@ def tela_lista(sistema):
                 print("operação com  sucesso")
             else :
                 print("cartão não existe nessa lista")
-
-
+        else :
+            print("Operação não existente")
 
 
 
@@ -198,6 +204,7 @@ menu_lista = """O que deseja fazer?
 5 - Adicionar Comentarios
 6 - Adicionar Etiqueta
 7 - Visualizar dados do cartão
+0 - Voltar para o Quadro
 """
 
 
