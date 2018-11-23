@@ -7,6 +7,9 @@ class Lista:
         self.titulo = titulo
         self.cartoes = []
 
+    def adcionar_cartao(self,cartao):
+        self.cartoes.append(cartao)
+
     def criar_cartao(self,id,titulo):
         cartao = Cartao(id,titulo)
         self.cartoes.append(cartao)
@@ -49,6 +52,14 @@ class Lista:
         cartao = self.achar_cartao(titulo)
         if cartao != None :
             return True,cartao.dados()
+
+    def apagar_cartao(self,titulo):
+        cartao = self.achar_cartao(titulo)
+        if cartao !=  None :
+            index = self.cartoes.index(cartao)
+            return self.cartoes.pop(index)
+        else :
+            return None
 
 
 

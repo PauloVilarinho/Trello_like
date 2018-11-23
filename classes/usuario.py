@@ -17,3 +17,11 @@ class Usuario:
 
     def adicionar_quadros(self,quadro):
         self.quadros.append(quadro)
+
+    def delete_quadro(self,quadro):
+        if quadro in self.quadros:
+            index = self.quadros.index(quadro)
+            self.quadros.pop(index)
+            return True
+        else :
+            return False

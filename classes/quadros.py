@@ -14,6 +14,14 @@ class Quadro:
         self.listas.append(lista)
         return lista
 
+    def apagar_lista(self,lista):
+        if lista in self.listas:
+            index = self.listas.index(lista)
+            self.listas.pop(index)
+            return True
+        else :
+            return False
+            
     def listar_listas(self):
         return self.listas
 

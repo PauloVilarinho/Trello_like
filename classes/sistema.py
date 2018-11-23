@@ -54,6 +54,12 @@ class Sistema:
             quadros.append(time.quadros)
         return quadros
 
+    def apagar_quadro(self,titulo):
+        for quadro in self.usuario_logado.quadros :
+            if quadro.titulo == titulo:
+                return self.usuario_logado.delete_quadro(quadro)
+        return False
+
     def acessar_quadro(self,titulo):
         for quadro in self.listar_quadros():
             if quadro.titulo == titulo :
@@ -75,6 +81,12 @@ class Sistema:
         lista = self.quadro_usando.adcionar_lista(self.banco.quantidade_listas,titulo)
         self.banco.armazenar_lista(lista)
         self.lista_usando = lista
+
+    def apagar_lista(self,titulo):
+        for lista in self.quadro_usando.listar_listas():
+            if lista.titulo == titulo:
+                return self.quadro_usando.apagar_lista(lista)
+        return False
 
     def mover_lista(self,titulo,index):
         return self.quadro_usando.mover_lista(titulo,index)
@@ -98,8 +110,21 @@ class Sistema:
     def listar_cartoes(self):
         return self.lista_usando.listar_cartoes()
 
-    def mover_cartao(self,id,titulo):
-        if self.lista_usando.mover_cartao(id,titulo):
+    def mover_cartao(self,titulo_lista,titulo):
+        if self.quadro_usando.acessar_lista(titulo_lista)[0]:
+            lista = self.quadro_usando.acessar_lista(titulo_lista)[1]
+            cartao = self.lista_usando.apagar_cartao(titulo)
+            if cartao != None:
+                lista.adcionar_cartao(cartao)
+                return True
+            else :
+                return False
+        else :
+            return False
+
+    def apagar_cartao(self,titulo):
+        cartao = self.lista_usando.apagar_cartao(titulo)
+        if cartao != None :
             return True
         else :
             return False
